@@ -1,0 +1,944 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alcoa Construction | St. George</title>
+  <!-- Font Awesome (icons) & Google Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: #ffffff;
+      color: #1e293b;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* reusable */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* header */
+    .header {
+      background: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #1e293b;
+    }
+    .logo span {
+      color: #eab308;
+    }
+    .nav a {
+      margin-left: 2rem;
+      text-decoration: none;
+      color: #1e293b;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav a:hover {
+      color: #eab308;
+    }
+    .nav-wrap {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+    .logo-image {
+      height: 44px;
+      width: auto;
+      display: block;
+    }
+
+    section {
+      padding: 5rem 0;
+    }
+
+    .section-heading {
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+    .section-heading:after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: #eab308;
+      margin: 1rem auto 0;
+      border-radius: 2px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #eab308;
+      color: #1e293b;
+      font-weight: 600;
+      padding: 0.9rem 2rem;
+      border-radius: 40px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 16px rgba(234, 179, 8, 0.25);
+    }
+    .btn-outline {
+      background: #eab308;
+      border: 2px solid #eab308;
+      color: #1e293b;
+      box-shadow: 0 8px 16px rgba(234, 179, 8, 0.25);
+    }
+    .btn-outline:hover {
+      background: #facc15;
+      color: #1e293b;
+    }
+    .btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(234, 179, 8, 0.35);
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      position: relative;
+      background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), 
+                  url('images/hero.jpeg') center/cover no-repeat;
+      color: white;
+    }
+    .hero-content {
+      max-width: 900px;
+      padding: 2rem 2rem 4rem;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 70vh;
+      animation: heroFade 1.5s ease-out;
+    }
+    @keyframes heroFade {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .hero h1 {
+      font-size: clamp(2.1rem, 6vw, 3.6rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      max-width: 700px;
+    }
+    .hero-highlights {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: nowrap;
+      margin: 0;
+    }
+    .hero-highlights span {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #eab308;
+      color: #1e293b;
+      padding: 0.5rem 1.2rem;
+      border-radius: 60px;
+      font-size: 1.1rem;
+    }
+    .hero-highlights i {
+      color: #1e293b;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: nowrap;
+      animation: buttonsSlide 1s 0.3s both;
+    }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      flex-wrap: nowrap;
+    }
+    @keyframes buttonsSlide {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* About */
+    .about-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem;
+      align-items: center;
+    }
+    .about-text {
+      flex: 1 1 400px;
+    }
+    .about-text p {
+      margin-bottom: 1.5rem;
+      color: #334155;
+    }
+    .stats-grid {
+      flex: 1 1 400px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+    .stat-item {
+      background: #f8fafc;
+      padding: 2rem 1rem;
+      text-align: center;
+      border-radius: 28px;
+      transition: transform 0.2s;
+    }
+    .stat-item:hover {
+      transform: scale(1.02);
+    }
+    .stat-number {
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: #eab308;
+      line-height: 1.2;
+      animation: countPop 0.8s ease-out both;
+      display: inline-block;
+    }
+    @keyframes countPop {
+      0% { transform: scale(0.2); opacity: 0; }
+      70% { transform: scale(1.1); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .stat-label {
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+    .about-images {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+    .about-images img {
+      width: calc(33.333% - 1rem);
+      border-radius: 24px;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+    .about-images img:hover {
+      transform: scale(1.03);
+    }
+
+    /* Floating image lines */
+    .floating-lines {
+      padding: 3rem 0 1rem;
+      background: #f8fafc;
+      overflow: hidden;
+    }
+    .marquee-row {
+      position: relative;
+      overflow: hidden;
+      padding: 0.6rem 0;
+    }
+    .marquee-track {
+      display: flex;
+      gap: 1.2rem;
+      width: max-content;
+      will-change: transform;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+    .marquee-row.direction-left .marquee-track {
+      animation-name: marqueeLeft;
+      animation-duration: 40s;
+    }
+    .marquee-row.direction-right .marquee-track {
+      animation-name: marqueeRight;
+      animation-duration: 52s;
+    }
+    .marquee-row.direction-left.slow .marquee-track {
+      animation-duration: 60s;
+    }
+    .marquee-row.direction-right.fast .marquee-track {
+      animation-duration: 34s;
+    }
+    @keyframes marqueeLeft {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    @keyframes marqueeRight {
+      0% { transform: translateX(-50%); }
+      100% { transform: translateX(0); }
+    }
+    .marquee-item {
+      flex: 0 0 auto;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+    }
+    .marquee-item img {
+      height: 150px;
+      width: 240px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .marquee-item img:hover {
+      transform: scale(1.03);
+    }
+
+    /* Services */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .service-card {
+      background: white;
+      border: 1px solid #e2e8f0;
+      padding: 2rem 1.5rem;
+      border-radius: 32px;
+      transition: all 0.4s;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.02);
+      text-align: center;
+    }
+    .service-card i {
+      font-size: 3rem;
+      color: #eab308;
+      margin-bottom: 1.2rem;
+    }
+    .service-card h3 {
+      margin-bottom: 0.8rem;
+    }
+    .service-card:hover {
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 0 25px 35px -10px rgba(234,179,8,0.2);
+      border-color: #eab308;
+    }
+
+    /* Why choose */
+    .why-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+    .why-item {
+      flex: 1 1 200px;
+      background: #f8fafc;
+      padding: 2rem 1rem;
+      border-radius: 28px;
+      text-align: center;
+      animation: slideIn 0.5s both;
+    }
+    .why-item:nth-child(2) { animation-delay: 0.1s; }
+    .why-item:nth-child(3) { animation-delay: 0.2s; }
+    .why-item:nth-child(4) { animation-delay: 0.3s; }
+    .why-item:nth-child(5) { animation-delay: 0.4s; }
+    .why-item:nth-child(6) { animation-delay: 0.5s; }
+    @keyframes slideIn {
+      0% { opacity: 0; transform: translateX(-20px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+    .why-item i {
+      font-size: 2.8rem;
+      color: #eab308;
+      margin-bottom: 1rem;
+    }
+
+    /* Portfolio */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+    .project-card {
+      background: white;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+      border: 1px solid #e2e8f0;
+    }
+    .project-images {
+      display: flex;
+      height: 200px;
+      overflow: hidden;
+    }
+    .project-images img {
+      width: 50%;
+      object-fit: cover;
+      transition: transform 0.6s;
+    }
+    .project-card:hover .project-images img {
+      transform: scale(1.08);
+    }
+    .project-info {
+      padding: 1.5rem;
+    }
+
+    /* Testimonials auto-scroll */
+    .testimonials-section {
+      background: #f8fafc;
+    }
+    .testimonial-carousel {
+      overflow: hidden;
+      mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+    }
+    .carousel-track {
+      display: flex;
+      width: max-content;
+      animation: scrollTestimonials 36s linear infinite;
+      gap: 2rem;
+      padding: 1rem 0;
+    }
+    .carousel-track:hover {
+      animation-play-state: paused;
+    }
+    .testimonial-card {
+      width: 320px;
+      background: white;
+      border-radius: 28px;
+      padding: 2rem 1.5rem;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.02);
+      border: 1px solid #edf2f7;
+    }
+    .testimonial-card .stars {
+      color: #eab308;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    .testimonial-card img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 1rem 0 0.5rem;
+    }
+    @keyframes scrollTestimonials {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(calc(-320px * 3 - 4rem)); }
+    }
+
+    /* Awards & achievements */
+    .awards-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+    .award-item {
+      background: #f8fafc;
+      padding: 2rem 2.5rem;
+      border-radius: 40px;
+      text-align: center;
+      font-weight: 600;
+      animation: fadeAward 1s;
+    }
+    @keyframes fadeAward {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    .award-item i {
+      font-size: 3rem;
+      color: #eab308;
+      margin-bottom: 1rem;
+    }
+
+    /* Certifications */
+    .certifications {
+      background: #1e293b;
+      color: white;
+      text-align: center;
+    }
+    .cert-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 3rem;
+      margin-top: 2rem;
+    }
+    .cert-grid span {
+      background: rgba(255,255,255,0.1);
+      padding: 0.8rem 2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      border: 1px solid #eab308;
+    }
+
+    /* Team */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+    }
+    .team-member {
+      background: white;
+      border-radius: 28px;
+      padding: 2rem 1rem;
+      text-align: center;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.02);
+      transition: transform 0.4s;
+    }
+    .team-member:hover {
+      transform: perspective(400px) rotateX(3deg) scale(1.02);
+    }
+    .team-member img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #eab308;
+      margin-bottom: 1rem;
+    }
+
+    /* Map & contact */
+    .map-container {
+      margin: 3rem 0;
+      border-radius: 32px;
+      overflow: hidden;
+      height: 350px;
+    }
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .contact-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem;
+    }
+    .contact-form {
+      flex: 2 1 400px;
+    }
+    .contact-info {
+      flex: 1 1 250px;
+      background: #f8fafc;
+      padding: 2rem;
+      border-radius: 36px;
+    }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%;
+      padding: 1rem 1.5rem;
+      border: 1px solid #d1d5db;
+      border-radius: 40px;
+      font-size: 1rem;
+      background: white;
+    }
+    .form-group textarea {
+      border-radius: 30px;
+      resize: vertical;
+    }
+
+    /* WhatsApp floating */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #25D366;
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 2.5rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      z-index: 100;
+      transition: 0.3s;
+      animation: pulse 2s infinite;
+      text-decoration: none;
+    }
+    .whatsapp-float:hover {
+      background: #128C7E;
+      transform: scale(1.1);
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.5); }
+      70% { box-shadow: 0 0 0 15px rgba(37,211,102,0); }
+      100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+    }
+
+    /* Footer */
+    footer {
+      background: #1e293b;
+      color: white;
+      padding: 3rem 2rem 1.5rem;
+    }
+    .footer-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 1280px;
+      margin: 0 auto;
+      gap: 2rem;
+    }
+    .footer-col a {
+      color: #cbd5e1;
+      text-decoration: none;
+      display: block;
+      margin: 0.5rem 0;
+    }
+    .social-icons i {
+      font-size: 1.8rem;
+      margin-right: 1rem;
+      color: #eab308;
+    }
+    .copyright {
+      text-align: center;
+      margin-top: 3rem;
+      color: #94a3b8;
+    }
+
+    @media (max-width: 768px) {
+      .header-inner {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .nav-wrap {
+        flex-direction: column;
+      }
+      .nav a {
+        margin: 0 0.8rem;
+      }
+      .logo-image {
+        height: 36px;
+      }
+      .hero-content { padding: 1rem; }
+      .about-images img { width: 100%; }
+      .hero-highlights span { font-size: 1rem; }
+      .marquee-item img {
+        height: 120px;
+        width: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container header-inner">
+    <div class="logo">Alcoa<span>Construction</span></div>
+    <div class="nav-wrap">
+      <div class="nav">
+        <a href="alcoa%20home.html">Home</a>
+        <a href="alcoa%20services.html">Services</a>
+        <a href="#projects">Projects</a>
+        <a href="alcoa%20blog.html">Blog</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <img src="images/logo.jpeg" alt="Alcoa Construction Logo" class="logo-image">
+    </div>
+  </div>
+</header>
+
+<!-- 1. HERO -->
+<section class="hero">
+  <div class="container hero-content">
+    <h1>Building Exceptional Homes & Spaces in St. George</h1>
+    <p>.</p>
+    <div class="hero-actions">
+      <div class="hero-highlights">
+        <span><i class="fas fa-star"></i> 4.9 Google Rating</span>
+        <span><i class="fas fa-map-marker-alt"></i> Serving St. George, Utah</span>
+      </div>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn">Request Free Quote</a>
+        <a href="#" class="btn btn-outline">View Our Projects</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Floating Image Lines -->
+<section class="floating-lines">
+  <div class="marquee-row direction-left">
+    <div class="marquee-track">
+      <div class="marquee-item"><img src="images/out%20door%20home.jpeg" alt="Exterior home"></div>
+      <div class="marquee-item"><img src="images/outdoor.jpeg" alt="Outdoor build"></div>
+      <div class="marquee-item"><img src="images/out%20door.jpeg" alt="Exterior design"></div>
+      <div class="marquee-item"><img src="images/outdoor2.jpeg" alt="Outdoor project"></div>
+      <div class="marquee-item"><img src="images/pool.jpeg" alt="Pool area"></div>
+      <div class="marquee-item"><img src="images/work%20image.jpg" alt="Construction work"></div>
+      <div class="marquee-item"><img src="images/out%20door%20home.jpeg" alt="Exterior home"></div>
+      <div class="marquee-item"><img src="images/outdoor.jpeg" alt="Outdoor build"></div>
+      <div class="marquee-item"><img src="images/out%20door.jpeg" alt="Exterior design"></div>
+      <div class="marquee-item"><img src="images/outdoor2.jpeg" alt="Outdoor project"></div>
+      <div class="marquee-item"><img src="images/pool.jpeg" alt="Pool area"></div>
+      <div class="marquee-item"><img src="images/work%20image.jpg" alt="Construction work"></div>
+    </div>
+  </div>
+  <div class="marquee-row direction-right fast">
+    <div class="marquee-track">
+      <div class="marquee-item"><img src="images/dining%20hall.jpeg" alt="Dining hall"></div>
+      <div class="marquee-item"><img src="images/dining1.jpeg" alt="Dining room"></div>
+      <div class="marquee-item"><img src="images/drawing%20room.jpeg" alt="Drawing room"></div>
+      <div class="marquee-item"><img src="images/indoor%20sofa.jpeg" alt="Indoor sofa"></div>
+      <div class="marquee-item"><img src="images/indoor%20gallery.jpeg" alt="Indoor gallery"></div>
+      <div class="marquee-item"><img src="images/bed%20room.jpeg" alt="Bedroom"></div>
+      <div class="marquee-item"><img src="images/dining%20hall.jpeg" alt="Dining hall"></div>
+      <div class="marquee-item"><img src="images/dining1.jpeg" alt="Dining room"></div>
+      <div class="marquee-item"><img src="images/drawing%20room.jpeg" alt="Drawing room"></div>
+      <div class="marquee-item"><img src="images/indoor%20sofa.jpeg" alt="Indoor sofa"></div>
+      <div class="marquee-item"><img src="images/indoor%20gallery.jpeg" alt="Indoor gallery"></div>
+      <div class="marquee-item"><img src="images/bed%20room.jpeg" alt="Bedroom"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. ABOUT -->
+<section>
+  <div class="container">
+    <h2 class="section-heading">About Alcoa Construction</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Alcoa Construction is a reliable construction company based in St. George, Utah, dedicated to building high-quality homes and transforming residential spaces through professional construction and remodeling services.</p>
+        <p>Our team of experienced contractors, architects, and builders works closely with clients to deliver projects that combine functionality, durability, and modern design. From custom homes to kitchen and bathroom renovations, we handle every project with precision and care.</p>
+        <p>We believe every home should reflect the vision and lifestyle of its owner. That is why we focus on delivering personalized construction solutions that meet the highest standards of quality and craftsmanship.</p>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-item"><span class="stat-number">15+</span><div class="stat-label">Years Experience</div></div>
+        <div class="stat-item"><span class="stat-number">200+</span><div class="stat-label">Completed Projects</div></div>
+        <div class="stat-item"><span class="stat-number">4.9</span><div class="stat-label">Google Rating</div></div>
+        <div class="stat-item"><span class="stat-number">100+</span><div class="stat-label">Happy Homeowners</div></div>
+      </div>
+    </div>
+    <div class="about-images">
+      <img src="images/work%20image.jpg" alt="Construction team">
+      <img src="images/out%20door%20home.jpeg" alt="Completed modern home">
+      <img src="images/indoor%201.jpeg" alt="Remodeling project">
+    </div>
+  </div>
+</section>
+
+<!-- 3. SERVICES -->
+<section id="projects" style="background: #f8fafc;">
+  <div class="container">
+    <h2 class="section-heading">Our Construction Services</h2>
+    <div class="services-grid">
+      <div class="service-card"><i class="fas fa-home"></i><h3>Custom Home Builder</h3><p>Complete design and construction of custom homes tailored to your lifestyle.</p></div>
+      <div class="service-card"><i class="fas fa-pencil-ruler"></i><h3>Architectural Design</h3><p>Professional architectural planning blending modern design with efficiency.</p></div>
+      <div class="service-card"><i class="fas fa-utensils"></i><h3>Kitchen Remodeling</h3><p>Modern kitchen renovation including cabinetry, countertops, and layout redesign.</p></div>
+      <div class="service-card"><i class="fas fa-bath"></i><h3>Bathroom Remodeling</h3><p>Transform outdated bathrooms into modern, elegant spaces.</p></div>
+      <div class="service-card"><i class="fas fa-warehouse"></i><h3>Garage Construction</h3><p>Strong, spacious garages designed for safety and functionality.</p></div>
+      <div class="service-card"><i class="fas fa-helmet-safety"></i><h3>General Contractor</h3><p>Full project management including planning, supervision, and execution.</p></div>
+      <div class="service-card"><i class="fas fa-tools"></i><h3>Home Remodeling</h3><p>Upgrade and modernize existing homes with innovative renovation solutions.</p></div>
+      <div class="service-card"><i class="fas fa-building"></i><h3>Real Estate Construction</h3><p>Professional building services for residential and real estate development.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. WHY CHOOSE US -->
+<section>
+  <div class="container">
+    <h2 class="section-heading">Why Choose Alcoa Construction</h2>
+    <div class="why-grid">
+      <div class="why-item"><i class="fas fa-user-tie"></i><h4>Experienced professionals</h4></div>
+      <div class="why-item"><i class="fas fa-draw-polygon"></i><h4>Skilled architects & builders</h4></div>
+      <div class="why-item"><i class="fas fa-file-invoice-dollar"></i><h4>Transparent pricing</h4></div>
+      <div class="why-item"><i class="fas fa-medal"></i><h4>High-quality materials</h4></div>
+      <div class="why-item"><i class="fas fa-calendar-check"></i><h4>Reliable timelines</h4></div>
+      <div class="why-item"><i class="fas fa-smile"></i><h4>Excellent satisfaction</h4></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. PROJECT PORTFOLIO -->
+<section style="background: #f8fafc;">
+  <div class="container">
+    <h2 class="section-heading">Our Recent Projects</h2>
+    <div class="portfolio-grid">
+      <div class="project-card">
+        <div class="project-images">
+          <img src="images/outdoor.jpeg" alt="Before">
+          <img src="images/outdoor2.jpeg" alt="After">
+        </div>
+        <div class="project-info"><h3>Modern Farmhouse</h3><p>Custom Home - St. George</p></div>
+      </div>
+      <div class="project-card">
+        <div class="project-images">
+          <img src="images/kitchen.jpeg" alt="Kitchen before">
+          <img src="images/kitchen%20(2).jpeg" alt="Kitchen after">
+        </div>
+        <div class="project-info"><h3>Kitchen Remodel</h3><p>Kitchen - Washington</p></div>
+      </div>
+      <div class="project-card">
+        <div class="project-images">
+          <img src="images/indoor5.jpeg" alt="Bath before">
+          <img src="images/wash%20basin.jpeg" alt="Bath after">
+        </div>
+        <div class="project-info"><h3>Bathroom Renovation</h3><p>Bathroom - St. George</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="container">
+    <h2 class="section-heading">What Our Clients Say</h2>
+    <div class="testimonial-carousel">
+      <div class="carousel-track">
+        <!-- duplicated to create seamless loop -->
+        <div class="testimonial-card"><div class="stars">*****</div><p>"Alcoa Construction helped us build our dream home. Their team was professional, efficient, and extremely skilled."</p><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80"><h4>Sarah Johnson</h4></div>
+        <div class="testimonial-card"><div class="stars">*****</div><p>"The kitchen remodeling project exceeded our expectations. The quality of work was exceptional."</p><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80"><h4>Michael Adams</h4></div>
+        <div class="testimonial-card"><div class="stars">*****</div><p>"Reliable contractors with excellent communication and attention to detail."</p><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80"><h4>David Carter</h4></div>
+        <!-- duplicate -->
+        <div class="testimonial-card"><div class="stars">*****</div><p>"Alcoa Construction helped us build our dream home. Their team was professional, efficient, and extremely skilled."</p><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80"><h4>Sarah Johnson</h4></div>
+        <div class="testimonial-card"><div class="stars">*****</div><p>"The kitchen remodeling project exceeded our expectations."</p><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80"><h4>Michael Adams</h4></div>
+        <div class="testimonial-card"><div class="stars">*****</div><p>"Reliable contractors with excellent communication."</p><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80"><h4>David Carter</h4></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. AWARDS -->
+<section>
+  <div class="container">
+    <h2 class="section-heading">Awards & Achievements</h2>
+    <div class="awards-grid">
+      <div class="award-item"><i class="fas fa-trophy"></i><h3>Local Excellence in Residential Construction</h3></div>
+      <div class="award-item"><i class="fas fa-medal"></i><h3>Best Home Design Project Recognition</h3></div>
+      <div class="award-item"><i class="fas fa-award"></i><h3>Outstanding Customer Service Award</h3></div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. CERTIFICATIONS -->
+<section class="certifications">
+  <div class="container">
+    <h2 class="section-heading" style="color:white;">Certifications & Safety Commitment</h2>
+    <div class="cert-grid">
+      <span>Licensed General Contractor</span>
+      <span>Residential Construction Certification</span>
+      <span>Building Safety Compliance</span>
+      <span>Professional Architectural Standards</span>
+    </div>
+    <p style="max-width:800px; margin:2rem auto 0; color:#cbd5e1;">Safety is a top priority in every project we undertake. Our construction team follows strict safety regulations and industry standards to ensure reliable and durable structures.</p>
+  </div>
+</section>
+
+<!-- 9. TEAM -->
+<section>
+  <div class="container">
+    <h2 class="section-heading">Meet Our Construction Experts</h2>
+    <div class="team-grid">
+      <div class="team-member"><img src="images/alcoa%20profile%20pic.jpg" alt="John Carter"><h3>John Carter</h3><p>Senior Project Manager</p></div>
+      <div class="team-member"><img src="images/alcoa%20profile%20pic.jpg" alt="Michael Lee"><h3>Michael Lee</h3><p>Lead Architect</p></div>
+      <div class="team-member"><img src="images/alcoa%20profile%20pic.jpg" alt="David Smith"><h3>David Smith</h3><p>Construction Supervisor</p></div>
+      <div class="team-member"><img src="images/alcoa%20profile%20pic.jpg" alt="Robert Clark"><h3>Robert Clark</h3><p>Remodeling Specialist</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 10. GOOGLE MAP -->
+<section style="padding-bottom:2rem;">
+  <div class="container">
+    <div class="map-container">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3077.1282!2d-113.5857!3d37.0954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80ca52f3d6b5b5b5%3A0xce4f2b0b3b1b1b!2s1060%20Providence%20Way%20UNIT%20121%2C%20St.%20George%2C%20UT%2084770!5e0!3m2!1sen!2sus!4v1712000000000" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- 11. CONTACT -->
+<section id="contact">
+  <div class="container">
+    <h2 class="section-heading">Get In Touch</h2>
+    <div class="contact-grid">
+      <div class="contact-form">
+        <form>
+          <div class="form-group"><input type="text" placeholder="Name"></div>
+          <div class="form-group"><input type="email" placeholder="Email"></div>
+          <div class="form-group"><input type="tel" placeholder="Phone"></div>
+          <div class="form-group">
+            <select><option>Project Type</option><option>Custom Home</option><option>Kitchen Remodel</option><option>Bathroom Remodel</option><option>Garage</option><option>Other</option></select>
+          </div>
+          <div class="form-group"><textarea rows="5" placeholder="Message"></textarea></div>
+          <button class="btn">Request Free Quote</button>
+        </form>
+      </div>
+      <div class="contact-info">
+        <h3>Address</h3>
+        <p>1060 Province Way UNIT 121, St. George, UT 84770</p>
+        <h3 style="margin-top:1.5rem;">Phone</h3>
+        <p>+1 435-879-9866</p>
+        <h3 style="margin-top:1.5rem;">Email</h3>
+        <p>info@alcoaconstruction.com</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12. WHATSAPP FLOATING -->
+<a href="https://wa.me/14358799866" class="whatsapp-float" target="_blank">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- 13. FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h3>Alcoa Construction</h3>
+      <p style="color:#cbd5e1;">Building exceptional homes in St. George since 2010.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="alcoa%20home.html">Home</a>
+      <a href="#">About</a>
+      <a href="alcoa%20services.html">Services</a>
+      <a href="alcoa%20blog.html">Blog</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>Address: 1060 Province Way UNIT 121, St. George, UT</p>
+      <p>Phone: +1 435-879-9866</p>
+    </div>
+    <div class="footer-col social-icons">
+      <h4>Follow us</h4>
+      <i class="fab fa-facebook"></i>
+      <i class="fab fa-instagram"></i>
+      <i class="fab fa-linkedin"></i>
+    </div>
+  </div>
+  <div class="copyright">(c) 2025 Alcoa Construction. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
